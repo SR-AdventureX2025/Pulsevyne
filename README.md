@@ -1,8 +1,8 @@
 <div align="center">
 # <image src="https://mb.sr-studio.cn/img/memobloom-logo.png" height="45"/>
 # PulseVyne
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All.svg?type=shield&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All?ref=badge_shield&issueType=license)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All.svg?type=shield&issueType=security)](https://app.fossa.com/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All?ref=badge_shield&issueType=security)
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All?ref=badge_shield&issueType=license" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All.svg?type=shield&issueType=license"/></a>
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All?ref=badge_shield&issueType=security" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All.svg?type=shield&issueType=security"/></a>
 <img src="https://img.shields.io/badge/Language-JavaScript-F7DF1E" alt="Language">
 <img src="https://img.shields.io/static/v1?label=LICENSE&message=MIT&color=blue" alt="License">
 <img src="https://img.shields.io/badge/Version-3.1.4-brightgreen" alt="Version">
