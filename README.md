@@ -1,8 +1,8 @@
 <div align="center">
 
 # PulseVyne
-
-<img src="https://img.shields.io/badge/Platform-WeChat%20MiniProgram-07C160" alt="Platform">
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All.svg?type=shield&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All?ref=badge_shield&issueType=license)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All.svg?type=shield&issueType=security)](https://app.fossa.com/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All?ref=badge_shield&issueType=security)
 <img src="https://img.shields.io/badge/Language-JavaScript-F7DF1E" alt="Language">
 <img src="https://img.shields.io/static/v1?label=LICENSE&message=MIT&color=blue" alt="License">
 <img src="https://img.shields.io/badge/Version-1.0.0-brightgreen" alt="Version">
