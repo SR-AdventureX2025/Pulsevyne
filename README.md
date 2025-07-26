@@ -5,7 +5,7 @@
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All.svg?type=shield&issueType=security)](https://app.fossa.com/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All?ref=badge_shield&issueType=security)
 <img src="https://img.shields.io/badge/Language-JavaScript-F7DF1E" alt="Language">
 <img src="https://img.shields.io/static/v1?label=LICENSE&message=MIT&color=blue" alt="License">
-<img src="https://img.shields.io/badge/Version-1.0.0-brightgreen" alt="Version">
+<img src="https://img.shields.io/badge/Version-3.1.4-brightgreen" alt="Version">
 
 一款专注于个人效率提升的微信小程序<br/>
 将理论知识转化为实际行动的智能工具
