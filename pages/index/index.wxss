@@ -33,7 +33,7 @@
 .app-name {
   font-size: 48rpx;
   font-weight: bold;
-z  margin-bottom: 10rpx;
+  margin-bottom: 10rpx;
   color: #fffdd9;
 }
 

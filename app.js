@@ -23,8 +23,8 @@ App({
     // 初始化提醒管理器
     this.initReminderManager();
     
-    // 请求通知权限
-    this.requestNotificationPermission();
+    // 请求通知权限 - 已禁用
+    // this.requestNotificationPermission();
     
     // 检查更新
     this.checkUpdate();
