@@ -1,10 +1,11 @@
 <div align="center">
-<image src="https://free.picui.cn/free/2025/07/27/68850bd000d92.png" height="50"/>
+<image src="https://free.picui.cn/free/2025/07/27/68850bd000d92.png" height="50"/>[PulseVyne](https://github.com/SR-AdventureX2025/Pulsevyne)
 <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All?ref=badge_shield&issueType=license" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All.svg?type=shield&issueType=license"/></a>
 <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All?ref=badge_shield&issueType=security" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All.svg?type=shield&issueType=security"/></a>
 <img src="https://img.shields.io/badge/Language-JavaScript-F7DF1E" alt="Language">
 <img src="https://img.shields.io/static/v1?label=LICENSE&message=MIT&color=blue" alt="License">
 <img src="https://img.shields.io/badge/Version-3.1.4-brightgreen" alt="Version">
+[PulseVyne后端](https://github.com/SR-AdventureX2025/Pulsevyne_backend)
 
 一款专注于个人效率提升的微信小程序<br/>
 将理论知识转化为实际行动的智能工具
