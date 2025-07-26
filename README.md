@@ -1,5 +1,5 @@
 <div align="center">
-
+# ![PulseVyne](https://free.picui.cn/free/2025/07/27/68850bd000d92.png)
 # PulseVyne
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All.svg?type=shield&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All?ref=badge_shield&issueType=license)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All.svg?type=shield&issueType=security)](https://app.fossa.com/projects/git%2Bgithub.com%2FSR-AdventureX2025%2FPulsevyne_All?ref=badge_shield&issueType=security)
@@ -54,7 +54,7 @@
 - **样式语言**: WXSS
 - **状态管理**: 小程序原生 data/setData
 - **组件化**: 自定义组件开发
-- **API集成**: RESTful API
+- **API集成**: Flask API
 - **工具库**: 飞书SDK、百度OCR、提醒管理
 - **图形格式**: SVG矢量图形
 - **主题设计**: 极光绿色主题
@@ -85,130 +85,6 @@ PulseVyne/
 ├── images/              # 图片资源
 └── docs/               # 文档说明
 ```
-
-## 安装指南
-
-### 前置要求
-- 微信开发者工具
-- 微信小程序开发账号
-- 飞书开发者账号（可选）
-
-### 安装步骤
-
-1. **克隆项目**
-```bash
-git clone [项目地址]
-cd PulseVyne
-```
-
-2. **导入微信开发者工具**
-- 打开微信开发者工具
-- 选择"导入项目"
-- 选择项目目录
-- 填入AppID（测试号或正式号）
-
-3. **配置API接口**
-```javascript
-// config/api.js
-const API_CONFIG = {
-  BASE_URL: 'https://your-api-domain.com',
-  // 其他配置...
-}
-```
-
-4. **配置飞书集成（可选）**
-- 在飞书开放平台创建应用
-- 获取App ID和App Secret
-- 配置回调地址
-
-## 开发配置
-
-### 代码规范
-项目使用ESLint进行代码规范检查：
-
-```javascript
-// .eslintrc.js
-module.exports = {
-  "env": {
-    "es6": true,
-    "node": true
-  },
-  "extends": "eslint:recommended",
-  "parserOptions": {
-    "ecmaVersion": 2018
-  }
-}
-```
-
-### 环境变量
-在`config/api.js`中配置不同环境的API地址：
-
-```javascript
-const getApiUrl = () => {
-  // 根据环境返回不同的API地址
-  const accountInfo = wx.getAccountInfoSync()
-  const envVersion = accountInfo.miniProgram.envVersion
-  
-  switch(envVersion) {
-    case 'develop': return 'https://dev-api.example.com'
-    case 'trial': return 'https://test-api.example.com'
-    case 'release': return 'https://api.example.com'
-    default: return 'https://api.example.com'
-  }
-}
-```
-
-## 部署指南
-
-### 小程序发布
-1. 在微信开发者工具中点击"上传"
-2. 填写版本号和项目备注
-3. 登录微信公众平台
-4. 提交审核
-5. 审核通过后发布
-
-### 后端API部署
-- 确保API服务器稳定运行
-- 配置HTTPS证书
-- 设置域名白名单
-- 配置服务器域名
-
-## 使用说明
-
-### 基本流程
-1. **记录理论**: 在理论页面记录学习内容
-2. **生成行动**: AI分析并生成具体行动建议
-3. **执行记录**: 记录行动执行情况和感受
-4. **查看进展**: 分析执行数据和改进建议
-5. **收集成就**: 完成里程碑获得成就徽章
-
-### 高级功能
-- **飞书同步**: 将数据同步到飞书表格
-- **OCR识别**: 拍照识别文字内容
-- **智能提醒**: 设置执行提醒通知
-- **数据分析**: 查看详细的执行统计
-
-## 贡献指南
-
-欢迎提交Issue和Pull Request来改进项目！
-
-### 开发流程
-1. Fork项目
-2. 创建功能分支
-3. 提交更改
-4. 发起Pull Request
-
-### 代码提交规范
-```
-feat: 新功能
-fix: 修复bug
-docs: 文档更新
-style: 代码格式调整
-refactor: 代码重构
-test: 测试相关
-chore: 构建过程或辅助工具的变动
-```
-
 ## 许可协议
 
 本项目采用 **MIT** 许可协议。
@@ -224,11 +100,9 @@ chore: 构建过程或辅助工具的变动
 
 ## 联系我们
 
-- 📧 邮箱: [your-email@example.com]
+- 📧 邮箱: [3429780769@qq.com]
 - 🐛 问题反馈: [GitHub Issues]
-- 💬 讨论交流: [微信群/QQ群]
 
----
 
 <div align="center">
 
