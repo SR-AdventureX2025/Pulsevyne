@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "PulseVyne",
+  "navigationStyle": "custom",
+  "backgroundColor": "#667eea",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "light"
+}

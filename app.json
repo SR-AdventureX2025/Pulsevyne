@@ -1,0 +1,24 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/theory/theory",
+    "pages/action/action",
+    "pages/execution/execution",
+    "pages/progress/progress",
+    "pages/achievement/achievement",
+    "pages/feishu-test/feishu-test"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "usingComponents": {
+    "navigation-bar": "/components/navigation-bar/navigation-bar"
+  },
+  "networkTimeout": {
+    "request": 60000,
+    "downloadFile": 60000
+  },
+
+  "renderer": "webview"
+}

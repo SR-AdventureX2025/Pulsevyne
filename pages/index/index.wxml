@@ -1,0 +1,139 @@
+<!--index.wxml-->
+<!-- 导航栏 -->
+<navigation-bar title="PulseVyne" background="linear-gradient(135deg, #C6F8B2 0%, #76C893 50%, #4A7C59 100%)" color="#ffffff" back="{{false}}" homeButton="{{false}}"></navigation-bar>
+
+<!-- 主容器 -->
+<view class="page-container">
+  <!-- 头部区域 -->
+  <view class="header">
+    <view class="logo-section">
+      <image class="logo" src="https://free.picui.cn/free/2025/07/27/68850e2271ea1.png" mode="aspectFit"></image>
+      <view class="app-name">PulseVyne</view>
+      <view class="app-slogan">理论到行动的智能转化</view>
+    </view>
+  </view>
+
+  <!-- 主要内容区域 -->
+  <scroll-view class="main-content" scroll-y>
+    <!-- 今日概览 -->
+    <view class="overview-section">
+      <view class="section-title">今日概览</view>
+      <view class="overview-cards">
+         <view class="overview-item">
+           <view class="overview-number">{{todayStats.theoryCount}}</view>
+           <view class="overview-label">理论记录</view>
+         </view>
+         <view class="overview-item">
+           <view class="overview-number">{{todayStats.actionCount}}</view>
+           <view class="overview-label">行动生成</view>
+         </view>
+         <view class="overview-item">
+           <view class="overview-number">{{todayStats.executionCount}}</view>
+           <view class="overview-label">执行完成</view>
+         </view>
+       </view>
+    </view>
+
+    <!-- 总概览 -->
+    <view class="total-overview-section">
+      <view class="section-title">总概览</view>
+      <view class="total-overview-cards">
+         <view class="total-overview-item">
+           <view class="total-overview-number {{totalStats.loading ? 'loading' : ''}}">{{totalStats.loading ? '--' : totalStats.theoryCount}}</view>
+           <view class="total-overview-label">理论记录</view>
+         </view>
+         <view class="total-overview-item">
+           <view class="total-overview-number {{totalStats.loading ? 'loading' : ''}}">{{totalStats.loading ? '--' : totalStats.actionCount}}</view>
+           <view class="total-overview-label">行动生成</view>
+         </view>
+         <view class="total-overview-item">
+           <view class="total-overview-number {{totalStats.loading ? 'loading' : ''}}">{{totalStats.loading ? '--' : totalStats.executionCount}}</view>
+           <view class="total-overview-label">执行完成</view>
+         </view>
+       </view>
+    </view>
+
+    <!-- 待执行提醒 -->
+    <view class="pending-reminder" wx:if="{{pendingAction}}">
+      <view class="reminder-header">
+        <view class="reminder-icon">⏰</view>
+        <view class="reminder-title">待执行行动</view>
+        <view class="reminder-badge">{{pendingHours}}小时前</view>
+      </view>
+      <view class="reminder-content">
+        <view class="reminder-text">{{pendingAction.title || pendingAction.description}}</view>
+        <button class="reminder-btn" bindtap="navigateToExecution">
+          <view class="btn-icon">▶️</view>
+          <view class="btn-text">立即执行</view>
+        </button>
+      </view>
+    </view>
+
+    <!-- 快速操作 -->
+    <view class="quick-actions">
+      <button class="quick-btn primary" bindtap="quickAddTheory">
+        <view class="btn-icon">✨</view>
+        <view class="btn-text">快速记录理论</view>
+      </button>
+      <button class="quick-btn secondary" bindtap="quickGenerateAction">
+        <view class="btn-icon">🚀</view>
+        <view class="btn-text">生成行动建议</view>
+      </button>
+      <button class="quick-btn test" bindtap="navigateToFeishuTest" wx:if="{{isSimulator}}">
+        <view class="btn-icon">🧪</view>
+        <view class="btn-text">飞书API测试</view>
+      </button>
+    </view>
+
+    <!-- 最近活动 -->
+    <view class="recent-section">
+      <view class="section-header">
+        <view class="section-title">最近活动</view>
+        <view class="section-subtitle">查看您的最新进展</view>
+      </view>
+      <view class="recent-list">
+        <view class="recent-item-wrapper" wx:for="{{recentActivities}}" wx:key="id">
+          <view class="recent-item" bindtap="onActivityTap" bindlongpress="deleteActivity" data-index="{{index}}" data-id="{{item.id}}">
+            <view class="activity-icon">{{item.icon}}</view>
+            <view class="activity-content">
+              <view class="activity-title">{{item.title}}</view>
+              <view class="activity-desc">{{item.description}}</view>
+              <view class="activity-time">{{item.time}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="recent-item empty" wx:if="{{recentActivities.length === 0}}">
+          <view class="activity-icon">📝</view>
+          <view class="activity-content">
+            <view class="activity-title">暂无活动记录</view>
+            <view class="activity-desc">开始记录您的第一个理论吧！</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+<!-- 底部导航栏 -->
+<view class="bottom-nav {{navFixed ? 'fixed' : ''}}" bindtouchstart="onTouchStart">
+  <view class="nav-item {{currentPage === 'theory' ? 'active' : ''}}" bindtap="navigateToTheory">
+    <view class="nav-icon">📝</view>
+    <view class="nav-label">理论记录</view>
+  </view>
+  <view class="nav-item {{currentPage === 'action' ? 'active' : ''}}" bindtap="navigateToAction">
+    <view class="nav-icon">🎯</view>
+    <view class="nav-label">行动生成</view>
+  </view>
+  <view class="nav-item {{currentPage === 'execution' ? 'active' : ''}}" bindtap="navigateToExecution">
+    <view class="nav-icon">✅</view>
+    <view class="nav-label">执行记录</view>
+  </view>
+  <view class="nav-item {{currentPage === 'progress' ? 'active' : ''}}" bindtap="navigateToProgress">
+    <view class="nav-icon">📊</view>
+    <view class="nav-label">进展反馈</view>
+  </view>
+  <view class="nav-item {{currentPage === 'achievement' ? 'active' : ''}}" bindtap="navigateToAchievement">
+    <view class="nav-icon">🏆</view>
+    <view class="nav-label">成就展厅</view>
+  </view>
+</view>

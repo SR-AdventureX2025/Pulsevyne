@@ -1,0 +1,115 @@
+<!--执行记录页-->
+<navigation-bar title="执行记录" background="linear-gradient(135deg, #C6F8B2 0%, #76C893 50%, #4A7C59 100%)" color="#ffffff" back="{{true}}" homeButton="{{true}}"></navigation-bar>
+
+<view class="container">
+  
+  <!-- 主要内容 -->
+  <view class="main-content">
+    <!-- 行动计划回顾 -->
+    <view class="action-review">
+      <view class="section-title">当前行动计划</view>
+      <view class="action-card">
+        <text class="action-text">{{actionPlan || '暂无行动计划'}}</text>
+      </view>
+    </view>
+    
+    <!-- 执行记录区域 -->
+    <view class="execution-section">
+      <view class="section-title">今日执行记录</view>
+      
+      <!-- 快速记录按钮 -->
+      <view class="quick-actions">
+        <button class="quick-btn completed" bindtap="quickRecord" data-type="completed">
+          <view class="quick-icon">✅</view>
+          <text class="quick-text">已完成</text>
+        </button>
+        <button class="quick-btn partial" bindtap="quickRecord" data-type="partial">
+          <view class="quick-icon">⏳</view>
+          <text class="quick-text">部分完成</text>
+        </button>
+        <button class="quick-btn delayed" bindtap="quickRecord" data-type="delayed">
+          <view class="quick-icon">⏰</view>
+          <text class="quick-text">延期执行</text>
+        </button>
+      </view>
+      
+      <!-- 详细记录输入 -->
+      <view class="detail-record">
+        <textarea 
+          class="record-input" 
+          placeholder="详细描述您的执行情况、遇到的问题、心得体会..." 
+          value="{{executionDetail}}"
+          bindinput="onDetailChange"
+          maxlength="800"
+        ></textarea>
+      </view>
+      
+      <!-- 执行评分 -->
+      <view class="rating-section">
+        <view class="rating-title">执行效果评分</view>
+        <view class="rating-stars">
+          <view wx:for="{{5}}" wx:key="*this" 
+               class="star {{index < rating ? 'active' : ''}}" 
+               data-rating="{{index + 1}}" 
+               bindtap="setRating">
+            ⭐
+          </view>
+        </view>
+        <text class="rating-text">{{ratingTexts[rating - 1] || '请评分'}}</text>
+      </view>
+    </view>
+    
+    <!-- 历史记录 -->
+    <view class="history-section">
+      <view class="section-title">最近记录</view>
+      <view class="history-list">
+        <view wx:for="{{executionHistory}}" wx:key="id" class="history-item">
+          <view class="history-header">
+            <view class="history-status {{item.status}}">{{item.statusText}}</view>
+            <text class="history-date">{{item.date}}</text>
+          </view>
+          <text class="history-content">{{item.content}}</text>
+          <view class="history-rating">
+            <text wx:for="{{item.rating}}" wx:key="*this" class="history-star">⭐</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 操作按钮 -->
+    <view class="action-buttons">
+      <button class="func-btn secondary-btn" bindtap="saveDraft">
+        <view class="btn-icon">💾</view>
+        <text class="btn-text">保存草稿</text>
+      </button>
+      <button class="func-btn primary-btn" bindtap="submitRecord">
+        <view class="btn-icon">📝</view>
+        <text class="btn-text">提交记录</text>
+      </button>
+    </view>
+  </view>
+  
+  <!-- 底部导航栏 -->
+  <view class="bottom-nav {{navFixed ? 'fixed' : ''}}" bindtouchstart="onTouchStart">
+    <view class="nav-item {{currentPage === 'theory' ? 'active' : ''}}" bindtap="navigateToTheory">
+      <view class="nav-icon">📝</view>
+      <view class="nav-label">理论记录</view>
+    </view>
+    <view class="nav-item {{currentPage === 'action' ? 'active' : ''}}" bindtap="navigateToAction">
+      <view class="nav-icon">🎯</view>
+      <view class="nav-label">行动生成</view>
+    </view>
+    <view class="nav-item {{currentPage === 'execution' ? 'active' : ''}}" bindtap="navigateToExecution">
+      <view class="nav-icon">✅</view>
+      <view class="nav-label">执行记录</view>
+    </view>
+    <view class="nav-item {{currentPage === 'progress' ? 'active' : ''}}" bindtap="navigateToProgress">
+      <view class="nav-icon">📊</view>
+      <view class="nav-label">进展反馈</view>
+    </view>
+    <view class="nav-item {{currentPage === 'achievement' ? 'active' : ''}}" bindtap="navigateToAchievement">
+      <view class="nav-icon">🏆</view>
+      <view class="nav-label">成就展厅</view>
+    </view>
+  </view>
+</view>

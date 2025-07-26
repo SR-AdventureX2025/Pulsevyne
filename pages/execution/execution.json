@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "执行记录",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#ffffff",
+  "backgroundColor": "#f8f9fa",
+  "enablePullDownRefresh": false
+}

@@ -1,0 +1,126 @@
+<!--飞书测试页面-->
+<view class="container">
+  <!-- 导航栏 -->
+  <view class="navigation-bar" style="background: linear-gradient(135deg, #C6F8B2 0%, #76C893 50%, #4A7C59 100%);">
+    <view class="nav-content">
+      <view class="nav-left" bindtap="goHome">
+        <view class="home-icon"></view>
+      </view>
+      <view class="nav-title">🧪 飞书API测试</view>
+      <view class="nav-right"></view>
+    </view>
+  </view>
+
+  <!-- 主要内容 -->
+  <view class="main-content">
+    <!-- 连接测试区域 -->
+    <view class="test-section">
+      <view class="section-title">
+        <text class="title-icon">🔗</text>
+        <text class="title-text">连接测试</text>
+        <view class="status-indicator status-{{connectionStatus}}"></view>
+      </view>
+      
+      <view class="test-card">
+        <view class="card-desc">测试飞书API连接状态</view>
+        <button 
+          class="test-btn {{isTestingConnection ? 'loading' : ''}}" 
+          bindtap="testConnection"
+          disabled="{{isTestingConnection}}"
+        >
+          {{isTestingConnection ? '测试中...' : '测试连接'}}
+        </button>
+      </view>
+    </view>
+
+    <!-- 记录创建测试区域 -->
+    <view class="test-section">
+      <view class="section-title">
+        <text class="title-icon">📝</text>
+        <text class="title-text">记录创建测试</text>
+      </view>
+      
+      <view class="test-card">
+        <!-- 列类型选择 -->
+        <view class="form-item">
+          <view class="form-label">选择列类型:</view>
+          <picker 
+            range="{{lineTypes}}" 
+            value="{{selectedLineId}}"
+            bindchange="onLineTypeChange"
+            class="picker"
+          >
+            <view class="picker-text">{{selectedLineId}}</view>
+          </picker>
+        </view>
+
+        <!-- 测试文本输入 -->
+        <view class="form-item">
+          <view class="form-label">测试文本:</view>
+          <textarea 
+            class="test-input"
+            placeholder="请输入测试文本内容"
+            value="{{testText}}"
+            bindinput="onTestTextChange"
+            maxlength="500"
+          ></textarea>
+        </view>
+
+        <button 
+          class="test-btn primary {{isCreatingRecord ? 'loading' : ''}}" 
+          bindtap="createTestRecord"
+          disabled="{{isCreatingRecord}}"
+        >
+          {{isCreatingRecord ? '创建中...' : '创建记录'}}
+        </button>
+      </view>
+    </view>
+
+    <!-- 测试结果区域 -->
+    <view class="test-section">
+      <view class="section-title">
+        <text class="title-icon">📊</text>
+        <text class="title-text">测试结果</text>
+        <view class="title-actions">
+          <text class="clear-btn" bindtap="clearTestResults" wx:if="{{testResults.length > 0}}">清空</text>
+        </view>
+      </view>
+      
+      <view class="results-container" wx:if="{{testResults.length > 0}}">
+        <view 
+          class="result-item result-{{item.success ? 'success' : 'failed'}}"
+          wx:for="{{testResults}}"
+          wx:key="timestamp"
+          bindtap="viewResultDetail"
+          data-index="{{index}}"
+        >
+          <view class="result-header">
+            <view class="result-type">
+              <text class="type-icon">{{item.type === 'connection' ? '🔗' : '📝'}}</text>
+              <text class="type-text">{{item.type === 'connection' ? '连接测试' : '创建记录'}}</text>
+            </view>
+            <view class="result-status">
+              <text class="status-icon">{{item.success ? '✅' : '❌'}}</text>
+            </view>
+          </view>
+          
+          <view class="result-content">
+            <view class="result-message">{{item.message}}</view>
+            <view class="result-time">{{item.timestamp}}</view>
+            <view class="result-line" wx:if="{{item.lineId}}">列: {{item.lineId}}</view>
+          </view>
+          
+          <view class="result-actions">
+            <text class="action-btn" catchtap="copyResult" data-index="{{index}}">复制</text>
+          </view>
+        </view>
+      </view>
+      
+      <view class="empty-results" wx:else>
+        <view class="empty-icon">📋</view>
+        <view class="empty-text">暂无测试结果</view>
+        <view class="empty-desc">点击上方按钮开始测试</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,135 @@
+<!--进展反馈页面-->
+<navigation-bar title="进展反馈" background="linear-gradient(135deg, #C6F8B2 0%, #76C893 50%, #4A7C59 100%)" color="#ffffff" back="{{true}}" homeButton="{{true}}"></navigation-bar>
+
+<view class="container">
+
+  <!-- 主内容区域 -->
+  <scroll-view class="main-content" scroll-y="true">
+    <!-- 执行总结 -->
+    <view class="summary-section">
+      <view class="section-title">
+        <text class="title-icon">📊</text>
+        <text class="title-text">执行总结</text>
+      </view>
+      <view class="summary-card">
+        <view class="summary-item">
+          <text class="summary-label">本周执行次数</text>
+          <text class="summary-value">{{weeklyCount}}次</text>
+        </view>
+        <view class="summary-item">
+          <text class="summary-label">平均评分</text>
+          <text class="summary-value">{{averageRating}}/5</text>
+        </view>
+        <view class="summary-item">
+          <text class="summary-label">完成率</text>
+          <text class="summary-value">{{completionRate}}%</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 趋势分析 -->
+    <view class="trend-section">
+      <view class="section-title">
+        <text class="title-icon">📈</text>
+        <text class="title-text">趋势分析</text>
+      </view>
+      <view class="trend-card">
+        <view class="trend-chart">
+          <!-- 简单的趋势图表示 -->
+          <view class="chart-container">
+            <view class="chart-bar" wx:for="{{trendData}}" wx:key="index" style="height: {{item.height}}%">
+              <text class="bar-label">{{item.label}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="trend-description">
+          <text class="trend-text">{{trendDescription}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- AI 反馈建议 -->
+    <view class="feedback-section">
+      <view class="section-title">
+        <text class="title-icon">🤖</text>
+        <text class="title-text">AI 反馈建议</text>
+      </view>
+      <view class="feedback-card">
+        <view wx:if="{{isGeneratingFeedback}}" class="loading-feedback">
+          <view class="loading-spinner"></view>
+          <text class="loading-text">AI正在分析您的执行情况...</text>
+        </view>
+        <view wx:else class="feedback-content">
+          <view class="feedback-item" wx:for="{{aiFeedback}}" wx:key="index">
+            <view class="feedback-type {{item.type}}">
+              <text class="feedback-icon">{{item.icon}}</text>
+              <text class="feedback-label">{{item.label}}</text>
+            </view>
+            <text class="feedback-text">{{item.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 改进建议 -->
+    <view class="improvement-section">
+      <view class="section-title">
+        <text class="title-icon">💡</text>
+        <text class="title-text">改进建议</text>
+      </view>
+      <view class="improvement-card">
+        <view class="improvement-item" wx:for="{{improvements}}" wx:key="index">
+          <view class="improvement-header">
+            <text class="improvement-title">{{item.title}}</text>
+            <text class="improvement-priority {{item.priority}}">{{item.priorityText}}</text>
+          </view>
+          <text class="improvement-description">{{item.description}}</text>
+          <view class="improvement-actions">
+            <button class="action-btn" bindtap="adoptSuggestion" data-index="{{index}}">采纳建议</button>
+            <button class="action-btn secondary" bindtap="ignoreSuggestion" data-index="{{index}}">暂时忽略</button>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 操作按钮组 -->
+    <view class="action-buttons">
+      <button class="action-button primary" bindtap="generateNewFeedback">
+        <text class="button-icon">🔄</text>
+        <text class="button-text">重新生成反馈</text>
+      </button>
+      <button class="action-button" bindtap="copyProgressReport">
+        <text class="button-icon">📋</text>
+        <text class="button-text">复制报告</text>
+      </button>
+      <button class="action-button secondary" open-type="share">
+        <text class="button-icon">📤</text>
+        <text class="button-text">分享进展</text>
+      </button>
+    </view>
+  </scroll-view>
+
+  <!-- 底部导航栏 -->
+  <view class="bottom-nav {{navFixed ? 'fixed' : ''}}" bindtouchstart="onTouchStart">
+    <view class="nav-item {{currentPage === 'theory' ? 'active' : ''}}" bindtap="navigateToTheory">
+      <view class="nav-icon">📝</view>
+      <view class="nav-label">理论记录</view>
+    </view>
+    <view class="nav-item {{currentPage === 'action' ? 'active' : ''}}" bindtap="navigateToAction">
+      <view class="nav-icon">🎯</view>
+      <view class="nav-label">行动生成</view>
+    </view>
+    <view class="nav-item {{currentPage === 'execution' ? 'active' : ''}}" bindtap="navigateToExecution">
+      <view class="nav-icon">✅</view>
+      <view class="nav-label">执行记录</view>
+    </view>
+    <view class="nav-item {{currentPage === 'progress' ? 'active' : ''}}" bindtap="navigateToProgress">
+      <view class="nav-icon">📊</view>
+      <view class="nav-label">进展反馈</view>
+    </view>
+    <view class="nav-item {{currentPage === 'achievement' ? 'active' : ''}}" bindtap="navigateToAchievement">
+      <view class="nav-icon">🏆</view>
+      <view class="nav-label">成就展厅</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,26 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="statsBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="300" height="200" fill="url(#statsBg)" rx="10"/>
+  
+  <!-- 标题 -->
+  <text x="150" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">📊 成就统计</text>
+  
+  <!-- 统计图标 -->
+  <rect x="50" y="60" width="200" height="80" fill="rgba(255,255,255,0.1)" rx="8"/>
+  
+  <!-- 统计内容 -->
+  <text x="80" y="85" fill="white" font-size="14">🏆 解锁成就</text>
+  <text x="80" y="105" fill="white" font-size="14">💎 获得积分</text>
+  <text x="80" y="125" fill="white" font-size="14">📈 完成进度</text>
+  
+  <!-- 应用名称 -->
+  <text x="150" y="165" text-anchor="middle" fill="white" font-size="14" opacity="0.9">PulseVyne</text>
+  <text x="150" y="185" text-anchor="middle" fill="white" font-size="12" opacity="0.7">理论与实践的完美结合</text>
+</svg>

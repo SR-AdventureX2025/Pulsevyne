@@ -1,0 +1,27 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="progressBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8edea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fed6e3;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="300" height="200" fill="url(#progressBg)" rx="10"/>
+  
+  <!-- 标题 -->
+  <text x="150" y="30" text-anchor="middle" fill="#333" font-size="16" font-weight="bold">📊 本周进展</text>
+  
+  <!-- 进展卡片 -->
+  <rect x="40" y="50" width="220" height="100" fill="rgba(255,255,255,0.3)" rx="8"/>
+  
+  <!-- 进展数据 -->
+  <text x="60" y="75" fill="#333" font-size="14">📈 完成执行次数</text>
+  <text x="60" y="95" fill="#333" font-size="14">⭐ 平均评分</text>
+  <text x="60" y="115" fill="#333" font-size="14">🎯 完成率</text>
+  <text x="60" y="135" fill="#333" font-size="14">🔥 持续进步</text>
+  
+  <!-- 应用名称 -->
+  <text x="150" y="170" text-anchor="middle" fill="#333" font-size="14" opacity="0.8">PulseVyne</text>
+  <text x="150" y="190" text-anchor="middle" fill="#333" font-size="12" opacity="0.6">理论与实践的完美结合</text>
+</svg>

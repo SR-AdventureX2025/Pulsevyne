@@ -1,0 +1,86 @@
+<!--理论记录页-->
+<navigation-bar title="理论记录" background="linear-gradient(135deg, #C6F8B2 0%, #76C893 50%, #4A7C59 100%)" color="#ffffff" back="{{true}}" homeButton="{{true}}"></navigation-bar>
+
+<view class="container">
+  
+  <!-- 主要内容 -->
+  <view class="main-content">
+    <!-- 输入区域 -->
+    <view class="input-section">
+      <textarea 
+        class="theory-input" 
+        placeholder="请输入或粘贴您的「道理」..." 
+        value="{{theoryText}}"
+        bindinput="onInputChange"
+        maxlength="1000"
+      ></textarea>
+      
+      <!-- 使用提示 -->
+      <view class="usage-tips">
+        <text class="tip-text">💡 提示：点击「图像识别」可以从照片中提取文字内容</text>
+      </view>
+    </view>
+    
+    <!-- 功能按钮组 -->
+    <view class="function-buttons">
+      <view class="button-row">
+        <button class="func-btn glass-btn" bindtap="linkRecognition">
+          <view class="btn-icon">🔗</view>
+          <text class="btn-text">链接内容</text>
+        </button>
+        <button class="func-btn glass-btn" bindtap="imageRecognition">
+          <view class="btn-icon">📷</view>
+          <text class="btn-text">图像识别</text>
+        </button>
+      </view>
+      
+      <view class="button-row">
+        <button class="func-btn secondary-btn" bindtap="clearText">
+          <view class="btn-icon">🗑️</view>
+          <text class="btn-text">清除</text>
+        </button>
+        <button class="func-btn secondary-btn" bindtap="saveDraft">
+          <view class="btn-icon">💾</view>
+          <text class="btn-text">保存草稿</text>
+        </button>
+      </view>
+      
+      <!-- 开发模式测试按钮 -->
+      <view class="button-row" wx:if="{{showTestBtn}}">
+        <button class="func-btn test-btn" bindtap="testOCR">
+          <view class="btn-icon">🧪</view>
+          <text class="btn-text">测试OCR</text>
+        </button>
+      </view>
+    </view>
+    
+    <!-- 提交按钮 -->
+    <view class="submit-section">
+      <button class="submit-btn" bindtap="submitTheory">提交记录</button>
+    </view>
+  </view>
+  
+  <!-- 底部导航栏 -->
+  <view class="bottom-nav {{navFixed ? 'fixed' : ''}}" bindtouchstart="onTouchStart">
+    <view class="nav-item {{currentPage === 'theory' ? 'active' : ''}}" bindtap="navigateToTheory">
+      <view class="nav-icon">📝</view>
+      <view class="nav-label">理论记录</view>
+    </view>
+    <view class="nav-item {{currentPage === 'action' ? 'active' : ''}}" bindtap="navigateToAction">
+      <view class="nav-icon">🎯</view>
+      <view class="nav-label">行动生成</view>
+    </view>
+    <view class="nav-item {{currentPage === 'execution' ? 'active' : ''}}" bindtap="navigateToExecution">
+      <view class="nav-icon">✅</view>
+      <view class="nav-label">执行记录</view>
+    </view>
+    <view class="nav-item {{currentPage === 'progress' ? 'active' : ''}}" bindtap="navigateToProgress">
+      <view class="nav-icon">📊</view>
+      <view class="nav-label">进展反馈</view>
+    </view>
+    <view class="nav-item {{currentPage === 'achievement' ? 'active' : ''}}" bindtap="navigateToAchievement">
+      <view class="nav-icon">🏆</view>
+      <view class="nav-label">成就展厅</view>
+    </view>
+  </view>
+</view>

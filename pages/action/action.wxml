@@ -1,0 +1,91 @@
+<!--行动生成页-->
+<navigation-bar title="行动生成" background="linear-gradient(135deg, #C6F8B2 0%, #76C893 50%, #4A7C59 100%)" color="#ffffff" back="{{true}}" homeButton="{{true}}"></navigation-bar>
+
+<view class="container">
+  
+  <!-- 主要内容 -->
+  <view class="main-content">
+    <!-- 理论回顾区域 -->
+    <view class="theory-review">
+      <view class="section-title">理论回顾</view>
+      <view class="theory-card">
+        <text class="theory-text">{{theoryText || '暂无理论记录'}}</text>
+      </view>
+    </view>
+    
+    <!-- 行动建议区域 -->
+    <view class="action-suggestions">
+      <view class="section-title">AI 行动建议</view>
+      <view class="suggestions-container">
+        <view wx:if="{{isGenerating}}" class="loading-state">
+          <view class="loading-icon">🤖</view>
+          <text class="loading-text">AI正在为您生成行动建议...</text>
+        </view>
+        
+        <view wx:else class="suggestions-list">
+          <view wx:for="{{actionSuggestions}}" wx:key="index" class="suggestion-item {{item.selected ? 'selected' : ''}}">
+            <view class="suggestion-header">
+              <view class="suggestion-icon">{{item.icon}}</view>
+              <text class="suggestion-title">{{item.title}}</text>
+              <view wx:if="{{item.selected}}" class="selected-badge">✓</view>
+            </view>
+            <text class="suggestion-desc">{{item.description}}</text>
+            <view class="suggestion-actions">
+              <button class="action-btn select-btn {{item.selected ? 'selected' : ''}}" data-index="{{index}}" bindtap="selectSuggestion">
+                {{item.selected ? '取消选择' : '选择此建议'}}
+              </button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 自定义行动区域 -->
+    <view class="custom-action">
+      <view class="section-title">自定义行动</view>
+      <textarea 
+        class="action-input" 
+        placeholder="或者，您可以自定义具体的行动计划..." 
+        value="{{customAction}}"
+        bindinput="onCustomActionChange"
+        maxlength="500"
+      ></textarea>
+    </view>
+    
+    <!-- 操作按钮组 -->
+    <view class="action-buttons">
+      <button class="func-btn secondary-btn" bindtap="regenerateActions">
+        <view class="btn-icon">🔄</view>
+        <text class="btn-text">重新生成</text>
+      </button>
+      <button class="func-btn primary-btn" bindtap="confirmAction">
+        <view class="btn-icon">✅</view>
+        <text class="btn-text">确认行动</text>
+      </button>
+    </view>
+  </view>
+  
+  <!-- 底部导航栏 -->
+  <view class="bottom-nav {{navFixed ? 'fixed' : ''}}" bindtouchstart="onTouchStart">
+    <view class="nav-item {{currentPage === 'theory' ? 'active' : ''}}" bindtap="navigateToTheory">
+      <view class="nav-icon">📝</view>
+      <view class="nav-label">理论记录</view>
+    </view>
+    <view class="nav-item {{currentPage === 'action' ? 'active' : ''}}" bindtap="navigateToAction">
+      <view class="nav-icon">🎯</view>
+      <view class="nav-label">行动生成</view>
+    </view>
+    <view class="nav-item {{currentPage === 'execution' ? 'active' : ''}}" bindtap="navigateToExecution">
+      <view class="nav-icon">✅</view>
+      <view class="nav-label">执行记录</view>
+    </view>
+    <view class="nav-item {{currentPage === 'progress' ? 'active' : ''}}" bindtap="navigateToProgress">
+      <view class="nav-icon">📊</view>
+      <view class="nav-label">进展反馈</view>
+    </view>
+    <view class="nav-item {{currentPage === 'achievement' ? 'active' : ''}}" bindtap="navigateToAchievement">
+      <view class="nav-icon">🏆</view>
+      <view class="nav-label">成就展厅</view>
+    </view>
+  </view>
+</view>

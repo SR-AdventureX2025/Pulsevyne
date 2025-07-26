@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "飞书API测试",
+  "navigationStyle": "custom",
+  "backgroundColor": "#f8f8f8",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": false
+}
